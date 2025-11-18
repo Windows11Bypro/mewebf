@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++学习笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        header {
+            background: #4a6fa5;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0;
+        }
+        .content {
+            padding: 30px;
+        }
+        h2 {
+            color: #4a6fa5;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        .note-section {
+            margin-bottom: 30px;
+        }
+        .function-list {
+            list-style-type: none;
+        }
+        .function-list li {
+            background: #f8f9fa;
+            margin: 12px 0;
+            padding: 15px;
+            border-left: 4px solid #4a6fa5;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .function-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        code {
+            background: #eef2f7;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #d63384;
+        }
+        .code-block {
+            background: #2d3a4b;
+            color: #e2e8f0;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .keyword {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+        .comment {
+            color: #6a737d;
+        }
+        .string {
+            color: #032f62;
+        }
+        .important {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .header-code {
+            background: #2d3a4b;
+            color: #e2e8f0;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        .preprocessor {
+            color: #d73a49;
+        }
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 10px;
+            }
+            header {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>C++学习笔记</h1>
+        </header>
+        
+        <div class="content">
+            <div class="note-section">
+                <h2>万能头文件</h2>
+                <div class="header-code">
+                    <span class="preprocessor">#include</span> <span class="string">&lt;bits/stdc++.h&gt;</span><br>
+                    <span class="keyword">using namespace</span> std;
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h2>Map基本操作</h2>
+                <ul class="function-list">
+                    <li><code>ma[ ]</code>：访问map中的元素，若该元素不存在，将创建一个新元素并将该元素映射到值类型的初始值上（对于int类型，初始值为0）</li>
+                    <li><code>ma.size()</code>：返回map中元素个数</li>
+                    <li><code>ma.count(element)</code>：若元素element存在map中返回1，否则返回0</li>
+                    <li><code>ma.clear()</code>：清空map</li>
+                    <li><code>ma.lower_bound()</code>：返回键值大于等于给定元素的第一个位置</li>
+                </ul>
+            </div>
+            
+            <div class="note-section">
+                <h2>迭代器使用</h2>
+                <div class="code-block">
+                    <span class="keyword">map</span>&lt;<span class="keyword">string</span>, <span class="keyword">int</span>&gt;::iterator it; <span class="comment">// 声明迭代器it</span><br><br>
+                    <span class="comment">// 输出键值对</span><br>
+                    cout &lt;&lt; it->first &lt;&lt; <span class="string">":"</span> &lt;&lt; it->second &lt;&lt; endl;
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h2>删除操作</h2>
+                <ul class="function-list">
+                    <li><code>ma.erase(it)</code>：删除it指向的元素</li>
+                    <li><code>ma.erase(key)</code>：删除指定键的元素</li>
+                    <li><code>ma.erase(it, ma.end())</code>：删除从it开始到结尾的所有元素</li>
+                </ul>
+            </div>
+            
+            <div class="note-section">
+                <h2>二分查找函数</h2>
+                <ul class="function-list">
+                    <li><code>lower_bound(first, last, val)</code>：返回非递减序列[first, last)中第一个大于等于val的位置，如果所有元素都小于val，则返回last的位置</li>
+                    <li><code>upper_bound(first, last, val)</code>：返回非递减序列[first, last)中第一个大于val的位置，如果所有元素都小于等于val，则返回last的位置</li>
+                    <li><code>binary_search(first, last, val)</code>：在序列中进行二分查找，若在序列中找到值val则返回True，否则返回False</li>
+                </ul>
+            </div>
+            
+            <div class="note-section">
+                <h2>去重函数</h2>
+                <ul class="function-list">
+                    <li><code>unique(a.begin(), a.end())</code>：去除相邻的重复元素（只保留一个）
+                        <p class="important">注意：对于无序序列，需要先用sort进行排序，才能正确使用此函数。</p>
+                    </li>
+                </ul>
+                <div class="code-block">
+                    <span class="comment">// 使用示例</span><br>
+                    vector&lt;<span class="keyword">int</span>&gt; vec = {1, 2, 2, 3, 3, 3, 4, 4, 5};<br>
+                    <span class="comment">// 先排序（如果无序）</span><br>
+                    sort(vec.begin(), vec.end());<br>
+                    <span class="comment">// 使用unique去重</span><br>
+                    <span class="keyword">auto</span> last = unique(vec.begin(), vec.end());<br>
+                    <span class="comment">// 删除重复元素</span><br>
+                    vec.erase(last, vec.end());<br>
+                    <span class="comment">// 现在vec包含: {1, 2, 3, 4, 5}</span>
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h2>文件操作</h2>
+                <ul class="function-list">
+                    <li><code>ifstream</code>：从文件读取数据</li>
+                    <li><code>ofstream</code>：向文件写入数据</li>
+                </ul>
+                <div class="code-block">
+                    <span class="comment">// 文件读取示例</span><br>
+                    #include &lt;fstream&gt;<br>
+                    ifstream infile("input.txt");<br>
+                    <span class="keyword">int</span> num;<br>
+                    <span class="keyword">while</span> (infile >> num) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// 处理读取的数据</span><br>
+                    }<br>
+                    infile.close();<br><br>
+                    
+                    <span class="comment">// 文件写入示例</span><br>
+                    ofstream outfile("output.txt");<br>
+                    outfile << "Hello, World!" << endl;<br>
+                    outfile.close();
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h2>字符串操作</h2>
+                <ul class="function-list">
+                    <li><code>count(s.begin(), s.end(), '0')</code>：查找字符串中字符'0'的个数</li>
+                </ul>
+                <div class="code-block">
+                    <span class="comment">// 使用示例</span><br>
+                    <span class="keyword">string</span> s = "100101001";<br>
+                    <span class="keyword">int</span> zeros = count(s.begin(), s.end(), '0');<br>
+                    <span class="comment">// zeros 的值为 5</span>
+                </div>
+            </div>
+            
+            <div class="note-section">
+                <h2>集合操作</h2>
+                <ul class="function-list">
+                    <li><code>set&lt;int&gt; s</code>：新建一个整数集合s</li>
+                    <li><code>s.insert(b)</code>：在集合s中插入元素b</li>
+                    <li><code>s.size()</code>：返回集合s的元素个数</li>
+                    <li><code>s.clear()</code>：删除集合s的所有元素</li>
+                </ul>
+                <div class="code-block">
+                    <span class="comment">// 使用示例</span><br>
+                    set&lt;<span class="keyword">int</span>&gt; s;<br>
+                    s.insert(5);<br>
+                    s.insert(3);<br>
+                    s.insert(8);<br>
+                    s.insert(3); <span class="comment">// 重复元素不会被插入</span><br>
+                    cout &lt;&lt; "集合大小: " &lt;&lt; s.size() &lt;&lt; endl; <span class="comment">// 输出 3</span><br>
+                    s.clear(); <span class="comment">// 清空集合</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>最后更新时间：2025年11月2日 | My Note，LTD</p>
+        </div>
+    </div>
+</body>
+</html>
